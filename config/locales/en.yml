@@ -54,6 +54,7 @@
 #   - https://community.openfoodnetwork.org/t/workflow-to-structure-translations/932
 
 en:
+  language_name: "English" # Localised name of this language
   activerecord:
     # Overridden here due to a bug in spree i18n (Issue #870)
     attributes:
