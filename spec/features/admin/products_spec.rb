@@ -86,24 +86,6 @@ feature %q{
       variant = product.variants.first
       variant.on_demand.should be_true
     end
-
-    scenario "making a product into a group buy product" do
-      product = create(:simple_product, name: 'group buy product')
-
-      login_to_admin_section
-
-      visit spree.edit_admin_product_path(product)
-
-      choose 'product_group_buy_1'
-      fill_in 'product_group_buy_unit_size', with: '10'
-
-      click_button 'Update'
-
-      flash_message.should == 'Product "group buy product" has been successfully updated!'
-      product.reload
-      product.group_buy.should be_true
-      product.group_buy_unit_size.should == 10.0
-    end
   end
 
   context "as an enterprise user" do
@@ -165,22 +147,6 @@ feature %q{
       product.tax_category.should == tax_category
     end
 
-    scenario "editing product group buy options" do
-      product = create(:simple_product, name: 'group buy product')
-
-      visit spree.edit_admin_product_path product
-      within('#sidebar') { click_link 'Group Buy Options' }
-      choose('product_group_buy_1')
-      fill_in 'Bulk unit size', :with => '10'
-
-      click_button 'Update'
-
-      flash_message.should == "Product \"#{product.name}\" has been successfully updated!"
-      product.reload
-      product.group_buy.should be_true
-      product.group_buy_unit_size.should == 10.0
-    end
-
     scenario "editing product distributions" do
       product = create(:simple_product, supplier: @supplier2)
 
@@ -217,6 +183,22 @@ feature %q{
       product.meta_description.should == 'Meta Description'
     end
  
+    scenario "editing product group buy options" do
+      product = create(:simple_product, supplier: @supplier2)
+
+      visit spree.edit_admin_product_path product
+      within('#sidebar') { click_link 'Group Buy Options' }
+      choose('product_group_buy_1')
+      fill_in 'Bulk unit size', :with => '10'
+
+      click_button 'Update'
+
+      flash_message.should == "Product \"#{product.name}\" has been successfully updated!"
+      product.reload
+      product.group_buy.should be_true
+      product.group_buy_unit_size.should == 10.0
+    end
+
     scenario "deleting product properties", js: true do
       # Given a product with a property
       p = create(:simple_product, supplier: @supplier2)
