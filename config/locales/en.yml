@@ -378,6 +378,8 @@ en:
       index:
         capture: "Capture"
         ship: "Ship"
+      invoice_email_sent: 'Invoice email has been sent'
+      order_email_resent: 'Order email has been resent'
       bulk_management:
         tip: "Use this page to alter product quantities across multiple orders. Products may also be removed from orders entirely, if required."
         shared: "Shared Resource?"
@@ -600,12 +602,17 @@ en:
         advanced_settings: Advanced Settings
         update_and_close: Update and Close
         choose_products_from: 'Choose Products From:'
-        pickup_time_tip: When orders from this OC will be ready for the customer
-        pickup_instructions_tip: These instructions are shown to customers after they complete an order
       exchange_form:
+        pickup_time_tip: When orders from this OC will be ready for the customer
         pickup_instructions_placeholder: "Pick-up instructions"
+        pickup_instructions_tip: These instructions are shown to customers after they complete an order
         pickup_time_placeholder: "Ready for (ie. Date / Time)"
         receival_instructions_placeholder: "Receival instructions"
+        add_fee: 'Add fee'
+        selected: 'selected'
+      add_exchange_form:
+        add_supplier: 'Add supplier'
+        add_distributor: 'Add distributor'
       advanced_settings:
         title: Advanced Settings
         choose_product_tip: You can opt to restrict all available products (both incoming and outgoing), to only those in %{inventory}'s inventory.
@@ -1505,6 +1512,7 @@ Please follow the instructions there to make your enterprise visible on the Open
   new_order_cycles: "New Order Cycles"
   new_order_cycle: "New Order Cycle"
   select_a_coordinator_for_your_order_cycle: "Select a coordinator for your order cycle"
+  notify_producers: 'Notify producers'
   edit_order_cycle: "Edit Order Cycle"
   roles: "Roles"
   update: "Update"
@@ -2023,6 +2031,8 @@ Please follow the instructions there to make your enterprise visible on the Open
       start_free_profile: "Start with a free profile, and expand when you're ready!"
 
   spree:
+    # TODO: remove `email` key once we get to Spree 2.0
+    email: Email
     admin:
       orders:
         invoice:
@@ -2046,6 +2056,8 @@ Please follow the instructions there to make your enterprise visible on the Open
             other: "You have %{count} active order cycles."
           manage_order_cycles: "MANAGE ORDER CYCLES"
       products:
+        new:
+          title: 'New Product'
         unit_name_placeholder: 'eg. bunches'
         bulk_edit:
           header:

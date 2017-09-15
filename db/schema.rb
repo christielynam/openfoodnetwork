@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20161215230219) do
+ActiveRecord::Schema.define(:version => 20170413083148) do
 
   create_table "account_invoices", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -401,12 +401,12 @@ ActiveRecord::Schema.define(:version => 20161215230219) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "mandatory"
-    t.boolean  "locked"
     t.integer  "originator_id"
     t.string   "originator_type"
     t.boolean  "eligible",                                       :default => true
     t.string   "adjustable_type"
     t.decimal  "included_tax",    :precision => 10, :scale => 2, :default => 0.0,  :null => false
+    t.string   "state"
   end
 
   add_index "spree_adjustments", ["adjustable_id"], :name => "index_adjustments_on_order_id"
@@ -870,6 +870,7 @@ ActiveRecord::Schema.define(:version => 20161215230219) do
     t.datetime "deleted_at"
     t.boolean  "require_ship_address", :default => true
     t.text     "description"
+    t.string   "tracking_url"
   end
 
   create_table "spree_skrill_transactions", :force => true do |t|
